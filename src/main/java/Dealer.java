@@ -4,15 +4,19 @@ import java.util.Collections;
 public class Dealer {
 
     private Deck deck;
-//    private ArrayList<Player> players;
+    private ArrayList<Player> players;
 
     public Dealer(Deck deck){
         this.deck = deck;
-//        this.players = players;
+        this.players = new ArrayList<>();
     }
 
     public void shuffleCard(){
         Collections.shuffle(deck.getDeck());
+    }
+
+    public ArrayList<Player> getPlayers(){
+        return this.players;
     }
 
     public Card dealCard(int i){
@@ -22,7 +26,15 @@ public class Dealer {
     }
 
     public void giveCard(Player player1, int i) {
-        Card anything = dealCard(i);
-        player1.receiveCard(anything);
+        Card myCard = dealCard(i);
+        player1.receiveCard(myCard);
+    }
+
+    public void addPlayer(Player player) {
+        this.players.add(player);
+    }
+
+    public int count() {
+        return this.players.size();
     }
 }
